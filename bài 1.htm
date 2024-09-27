@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng </title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: auto;}
+            button {
+                padding: 10px;
+                width: 100%;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .result {
+                margin-top: 20px;
+                font-size: 1.2em;
+                color: #333;
+            }
+            
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: rgb(46, 139, 139);">Tính Tổng Từ 1 Đến n</h2>
+        <label for="number">Nhập giá trị n:</label>
+        <input type="number" id="number" min="1" placeholder="Nhập giá trị n"> 
+        <button onclick="calculateSum()">Tính Tổng</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculateSum() {
+            // Lấy giá trị n từ input
+            const n = parseInt(document.getElementById('number').value);
+    
+            // Kiểm tra giá trị nhập vào
+            if (isNaN(n) || n < 1) {
+                alert('Vui lòng nhập một số nguyên dương hợp lệ.');
+                return;
+            }
+    
+            // Tính tổng từ 1 đến n
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+            }
+    
+            // Hiển thị kết quả
+            document.getElementById('result').innerText = `Tổng từ 1 đến ${n} là: ${sum}`;
+        }
+    </script>
+    
+</body>

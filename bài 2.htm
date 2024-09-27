@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng các số chẵn </title>
+    <style>
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+          }
+        p{
+            font-family:  'Times New Roman', Times, serif;
+            font-size: 18px;
+            color: #046171;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2 style="color: rgb(46, 139, 139);">Tính Tổng Các Số Chẵn Từ 1 Đến n</h2>
+        <p>Nhập giá trị n:</p>
+        <input type="number" id="numberInput" placeholder="Nhập giá trị n" min="1">
+        <button onclick="calculateEvenSum()">Tính Tổng</button>
+    
+    </center>
+    
+    <div class="result" id="sumResult"></div>
+    <script>
+        function calculateEvenSum() {
+          // Lấy giá trị n từ input
+          const n = parseInt(document.getElementById('numberInput').value);
+          
+          // Kiểm tra giá trị nhập vào
+          if (isNaN(n) || n < 1) {
+            alert('Vui lòng nhập một số nguyên dương hợp lệ.');
+            return;
+          }
+          
+          // Tính tổng các số chẵn từ 1 đến n
+          let sum = 0;
+          for (let i = 2; i <= n; i += 2) {
+            sum += i;
+          }
+          
+          // Hiển thị kết quả
+          document.getElementById('sumResult').innerText = `Tổng các số chẵn từ 1 đến ${n} là: ${sum}`;
+        }
+      </script>
+</body>

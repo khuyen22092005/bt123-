@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm Ước Chung Lớn Nhất Của Hai Số</title>
+  <style>
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+      }
+      .gcd {
+        color: #28a745;
+      }
+      p{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        color: #037d20;
+        font-weight: bold;
+      }
+  </style>
+</head>
+<body>
+    <center>
+        <h2 style="color:rgb(12, 136, 12) ;">Tìm Ước Chung Lớn Nhất (GCD)</h2>
+        <p>Nhập số thứ nhất: <input type="number" id="number1" placeholder="Nhập số thứ nhất" min="1"></p>
+    
+        <p>Nhập số thứ hai: <input type="number" id="number2" placeholder="Nhập số thứ hai" min="1"></p><br>
+        <button onclick="calculateGCD()">Tính GCD</button>
+        <div class="result" id="result"></div>
+    </center>
+    <script>
+        /**
+         * Hàm tính Ước Chung Lớn Nhất (GCD) sử dụng Thuật toán Euclid.
+         * @param {number} a - Số nguyên dương thứ nhất.
+         * @param {number} b - Số nguyên dương thứ hai.
+         * @returns {number} - GCD của a và b.
+         */
+        function gcd(a, b) {
+          while (b !== 0) {
+            let temp = b;
+            b = a % b;
+            a = temp;
+          }
+          return a;
+        }
+        
+        /**
+         * Hàm xử lý sự kiện khi người dùng nhấn nút "Tính GCD".
+         * Lấy giá trị từ các input, kiểm tra tính hợp lệ và hiển thị kết quả.
+         */
+        function calculateGCD() {
+          const num1 = parseInt(document.getElementById('number1').value);
+          const num2 = parseInt(document.getElementById('number2').value);
+          const resultDiv = document.getElementById('result');
+    
+          // Kiểm tra giá trị nhập vào
+          if (isNaN(num1) || isNaN(num2)) {
+            resultDiv.innerHTML = `<span class="error">Vui lòng nhập cả hai số.</span>`;
+            return;
+          }
+    
+          if (num1 < 1 || num2 < 1) {
+            resultDiv.innerHTML = `<span class="error">Vui lòng nhập các số nguyên dương lớn hơn hoặc bằng 1.</span>`;
+            return;
+          }
+    
+          // Tính GCD
+          const result = gcd(num1, num2);
+    
+          // Hiển thị kết quả
+          resultDiv.innerHTML = `<span class="gcd">Ước chung lớn nhất của ${num1} và ${num2} là: ${result}</span>`;
+        }
+      </script>
+    
+</body>
